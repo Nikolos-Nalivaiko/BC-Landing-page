@@ -1,22 +1,5 @@
 (() => {
     "use strict";
-    class Preloader {
-        constructor(preloaderElement, contentElement) {
-            this.preloader = preloaderElement;
-            this.content = contentElement;
-        }
-        hide() {
-            this.preloader.style.opacity = "0";
-            setTimeout((() => {
-                this.preloader.style.display = "none";
-                this.content.style.display = "block";
-                setTimeout((() => {
-                    this.content.style.opacity = "1";
-                    document.body.style.overflow = "auto";
-                }), 50);
-            }), 1e3);
-        }
-    }
     function ssr_window_esm_isObject(obj) {
         return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
     }
@@ -8586,12 +8569,6 @@
         }
     }
     document.addEventListener("DOMContentLoaded", (() => {
-        const preloaderElement = document.getElementById("preloader");
-        const contentElement = document.getElementById("content");
-        const preloader = new Preloader(preloaderElement, contentElement);
-        window.onload = function() {
-            preloader.hide();
-        };
         new FadeInObserver(".fade-in", {
             duration: 800,
             distance: 65,
