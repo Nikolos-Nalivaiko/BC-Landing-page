@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Home Page</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20250117011437">
+	<link rel="shortcut icon" href="favicon.ico">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?_v=20240826114116"></script>
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<style>
+		body {
+			overflow: hidden;
+		}
+
+		#preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			z-index: 9999;
+			opacity: 1;
+			transition: opacity 1s ease;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+
+		/* Логотип */
+		.preloader-logo {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 25xp;
+			margin-bottom: 75px;
+
+			img {
+				width: 250px;
+
+				@media (max-width: 479px) {
+					width: 200px;
+				}
+			}
+		}
+
+		#content {
+			opacity: 0;
+			transition: opacity 0.8s ease;
+		}
+
+		.loader {
+			height: 5px;
+			width: 200px;
+			--c: no-repeat linear-gradient(#FF0000 0 0);
+			background: var(--c), var(--c), #dbdbdb;
+			background-size: 60% 100%;
+			animation: l16 3s infinite;
+		}
+
+		@keyframes l16 {
+			0% {
+				background-position: -150% 0, -150% 0
+			}
+
+			66% {
+				background-position: 250% 0, -150% 0
+			}
+
+			100% {
+				background-position: 250% 0, 250% 0
+			}
+		}
+	</style>
+
+
+	<div id="preloader">
+		<div class="preloader-logo">
+			<img src="img/logo.svg" alt="Logo">
+		</div>
+		<div class="loader"></div>
+	</div>
+
+	<div class="wrapper" id="content">
+		<header class="header"></header>
+
+		<main class="main">
+			<section class="hero__section __container section">
+				<div class="hero__wrapper">
+					<h1 class="hero__title">
+						Запусти <span class="hero__title--accent">за 7 днів</span> свій
+						бізнес на маркетплейсах та отримай
+						<span class="hero__title--accent">перший прибуток</span>!
+					</h1>
+					<p class="hero__subtitle">
+						Покрокова програма, яка допоможе почати заробляти з Rozetka,
+						Prom.ua та Епіцентром. Навіть без досвіду та великих вкладень!
+					</p>
+					<div class="hero__btn-wrapper">
+						<button class="hero__btn cta__btn">Отримати курс</button>
+						<div class="hero__prices">
+							<span class="hero__price">390 грн.</span>
+							<span class="hero__price--old">3550 грн.</span>
+						</div>
+					</div>
+				</div>
+				<img src="img/hero/hero.webp" class="hero__image" alt="Image" />
+			</section>
+
+			<section class="start__section __container section">
+				<div class="start__text">
+					<h2 class="start__title">Швидкий старт</h2>
+					<p class="start__subtitle">
+						Навчись швидко стартувати на таких популярних платформах,
+						як Rozetka, Prom.ua та Епіцентр
+						<span class="start__subtitle--accent">лише за 7 днів</span>
+					</p>
+				</div>
+				<div class="start__blocks">
+					<div class="start__block">
+						<img src="img/start/rozetka.svg" alt="Image" />
+						<span class="start__block-title">Rozetka</span>
+					</div>
+					<div class="start__block">
+						<img src="img/start/prom.webp" alt="Image" />
+						<span class="start__block-title">Prom.ua</span>
+					</div>
+					<div class="start__block">
+						<img src="img/start/epicenter.webp" alt="Image" />
+						<span class="start__block-title">Епіцентр</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="author__section __container section">
+				<div class="author__text">
+					<h3 class="author__title">
+						Єдина <span>програма</span>, яка допоможе тобі
+						<span>досягти</span> реальних <span>результатів</span>!
+					</h3>
+					<p class="author__subtitle">
+						Інструменти, які перевірені мною та іншими учасниками
+					</p>
+					<div class="author__review">
+						<p class="author__review-title">Відгук учасника:</p>
+						<p class="author__review-description">
+							“Завдяки курсу я почав отримувати перші замовлення вже на 3-й
+							день!”
+						</p>
+					</div>
+					<button class="author__btn cta__btn">Хочу приєднатися!</button>
+				</div>
+				<div class="author__image-wrapper">
+					<div class="author__blocks">
+						<div class="author__block">
+							<div class="author__block-text">
+								<p class="author__block-title">14</p>
+								<p class="author__block-description">Років досвіду</p>
+							</div>
+						</div>
+						<div class="author__block">
+							<div class="author__block-text">
+								<p class="author__block-title">500+</p>
+								<p class="author__block-description">Учасників</p>
+							</div>
+						</div>
+						<div class="author__block">
+							<div class="author__block-text">
+								<p class="author__block-title">100 000+</p>
+								<p class="author__block-description">Товарів продано</p>
+							</div>
+						</div>
+					</div>
+					<img src="img/author/author.webp" alt="Image" />
+				</div>
+			</section>
+
+			<section class="advantages__section __container section">
+				<div class="advantages__inner">
+					<h2 class="advantages__title">6 ключових переваг курсу</h2>
+					<button class="cta__btn--extensions">
+						<span class="advantages__btn cta__btn">про програму</span>
+						<span class="advantages__btn cta__btn--extensions-subbtn">-89%</span>
+					</button>
+				</div>
+
+				<div class="advantages__list">
+					<div class="advantages__block">
+						<div class="advantages__icon">
+							<img src="img/icons/seen.svg" alt="Image" />
+						</div>
+						<p class="advantages__item">
+							Реєстрація акаунтів на Rozetka, Prom.ua та Епіцентрі.
+						</p>
+					</div>
+					<div class="advantages__block">
+						<div class="advantages__icon">
+							<img src="img/icons/seen.svg" alt="Image" />
+						</div>
+						<p class="advantages__item">
+							Реєстрація акаунтів на Rozetka, Prom.ua та Епіцентрі.
+						</p>
+					</div>
+					<div class="advantages__block">
+						<div class="advantages__icon">
+							<img src="img/icons/seen.svg" alt="Image" />
+						</div>
+						<p class="advantages__item">
+							Реєстрація акаунтів на Rozetka, Prom.ua та Епіцентрі.
+						</p>
+					</div>
+					<div class="advantages__block">
+						<div class="advantages__icon">
+							<img src="img/icons/seen.svg" alt="Image" />
+						</div>
+						<p class="advantages__item">
+							Реєстрація акаунтів на Rozetka, Prom.ua та Епіцентрі.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="about__section __container section">
+				<h2 class="about__title">Цей курс для тебе, якщо….</h2>
+				<div class="about__blocks">
+					<div class="about__block">
+						<div class="about__block-icon">
+							<img src="img/icons/about/up.svg" alt="Image" />
+						</div>
+						<p class="about__block-title">Не знаєш, як почати?</p>
+						<p class="about__block-subtitle">
+							Ми дамо чіткий покроковий план
+						</p>
+					</div>
+
+					<div class="about__block">
+						<div class="about__block-icon">
+							<img src="img/icons/about/scary.svg" alt="Image" />
+						</div>
+						<p class="about__block-title">Боїшся зробити помилку?</p>
+						<p class="about__block-subtitle">
+							Покажемо, як уникнути поширених проблем
+						</p>
+					</div>
+
+					<div class="about__block">
+						<div class="about__block-icon">
+							<img src="img/icons/about/time.svg" alt="Image" />
+						</div>
+						<p class="about__block-title">Немає часу?</p>
+						<p class="about__block-subtitle">
+							Уроки адаптовані для зайнятих людей.
+						</p>
+					</div>
+
+					<div class="about__block">
+						<div class="about__block-icon">
+							<img src="img/icons/about/send.svg" alt="Image" />
+						</div>
+						<p class="about__block-title">Сумніваєшся?</p>
+						<p class="about__block-subtitle">
+							Ми завжди поруч у Telegram-групі.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="program__section __container section">
+				<h2 class="program__title">Програма курсу</h2>
+				<div class="program__blocks">
+					<div class="program__block">
+						<div class="program__block-header">
+							<div class="program__btn-wrapper">
+								<button class="program__btn">
+									<img src="img/icons/arrow-bottom.svg" alt="Image" />
+								</button>
+								<span class="program__btn-title">Крок 1</span>
+							</div>
+
+							<p class="program__block-title">Знайомство з маркетплейсами</p>
+						</div>
+
+						<ul class="program__list">
+							<li class="program__item">
+								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+							</li>
+							<li class="program__item">
+								Як знайти свою нішу та вигідні товари?
+							</li>
+							<li class="program__item">
+								Основні переваги роботи з маркетплейсами.
+							</li>
+						</ul>
+					</div>
+
+					<div class="program__block">
+						<div class="program__block-header">
+							<div class="program__btn-wrapper">
+								<button class="program__btn">
+									<img src="img/icons/arrow-bottom.svg" alt="Image" />
+								</button>
+								<span class="program__btn-title">Крок 1</span>
+							</div>
+
+							<p class="program__block-title">Знайомство з маркетплейсами</p>
+						</div>
+
+						<ul class="program__list">
+							<li class="program__item">
+								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+							</li>
+							<li class="program__item">
+								Як знайти свою нішу та вигідні товари?
+							</li>
+							<li class="program__item">
+								Основні переваги роботи з маркетплейсами.
+							</li>
+						</ul>
+					</div>
+
+					<div class="program__block">
+						<div class="program__block-header">
+							<div class="program__btn-wrapper">
+								<button class="program__btn">
+									<img src="img/icons/arrow-bottom.svg" alt="Image" />
+								</button>
+								<span class="program__btn-title">Крок 1</span>
+							</div>
+
+							<p class="program__block-title">Знайомство з маркетплейсами</p>
+						</div>
+
+						<ul class="program__list">
+							<li class="program__item">
+								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+							</li>
+							<li class="program__item">
+								Як знайти свою нішу та вигідні товари?
+							</li>
+							<li class="program__item">
+								Основні переваги роботи з маркетплейсами.
+							</li>
+						</ul>
+					</div>
+
+					<div class="program__block">
+						<div class="program__block-header">
+							<div class="program__btn-wrapper">
+								<button class="program__btn">
+									<img src="img/icons/arrow-bottom.svg" alt="Image" />
+								</button>
+								<span class="program__btn-title">Крок 1</span>
+							</div>
+
+							<p class="program__block-title">Знайомство з маркетплейсами</p>
+						</div>
+
+						<ul class="program__list">
+							<li class="program__item">
+								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+							</li>
+							<li class="program__item">
+								Як знайти свою нішу та вигідні товари?
+							</li>
+							<li class="program__item">
+								Основні переваги роботи з маркетплейсами.
+							</li>
+						</ul>
+					</div>
+
+					<div class="program__block--bonus">
+						<div class="program__block-bonus-wrapper">
+							<div class="program__block-bonus-icon">
+								<img src="img/icons/bonus.svg" alt="Image" />
+							</div>
+							<p class="program__block-bonus-title">Бонусний модуль</p>
+						</div>
+						<ul class="program__block-bonus-list">
+							<li class="program__item">Коли необхідно реєструвати ФОП?</li>
+							<li class="program__item">
+								Яку групу краще обрати для різних видів діяльності?
+							</li>
+							<li class="program__item">
+								Як зрозуміти, коли варто залучити помічників?
+							</li>
+							<li class="program__item">
+								Хто має бути в команді, щоб бізнес розвивався швидше?
+							</li>
+							<li class="program__item">Та інші важливі питання!</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="guarantee__section __container section">
+				<div class="guarantee__wrapper">
+					<h3 class="guarantee__title">100% гарантія повернення коштів</h3>
+					<p class="guarantee__subtitle">
+						Пройди марафон, виконай завдання та отримай результат. Якщо
+						відчуєш що курс тобі не підходить. одразу повернемо кошти без
+						зайвих запитань!
+					</p>
+					<img src="img/guarantee.webp" class="guarantee__image" alt="Image" />
+				</div>
+			</section>
+
+			<section class="faq__section __container section">
+				<h2 class="faq__title">Часті запитання</h2>
+				<p class="faq__subtitle">
+					Маєш питання? Ось відповіді на найпоширеніші
+				</p>
+
+				<div class="faq__list">
+					<div class="faq__item">
+						<div class="faq__header">
+							<div class="faq__text">
+								<div class="faq__icon">
+									<img src="img/icons/question.svg" alt="Image" />
+								</div>
+								<p class="faq__item-title">
+									Що робити, якщо я нічого не знаю про маркетплейси?
+								</p>
+							</div>
+							<button class="faq__arrow">
+								<img src="img/icons/arrow-faq.svg" alt="Image" />
+							</button>
+						</div>
+						<p class="faq__description">
+							Не хвилюйтеся! Курс створений спеціально для новачків. Уроки
+							побудовані так, щоб кожен крок був зрозумілий навіть без
+							досвіду. Ви отримаєте:
+						</p>
+
+						<ul class="faq__item-list">
+							<li class="program__item">Покрокові відеоінструкції.</li>
+							<li class="program__item">Чек-листи для виконання завдань.</li>
+							<li class="program__item">
+								Підтримку в Telegram-групі на випадок питань.
+							</li>
+						</ul>
+					</div>
+					<div class="faq__item">
+						<div class="faq__header">
+							<div class="faq__text">
+								<div class="faq__icon">
+									<img src="img/icons/question.svg" alt="Image" />
+								</div>
+								<p class="faq__item-title">
+									Що робити, якщо я нічого не знаю про маркетплейси?
+								</p>
+							</div>
+							<button class="faq__arrow">
+								<img src="img/icons/arrow-faq.svg" alt="Image" />
+							</button>
+						</div>
+						<p class="faq__description">
+							Не хвилюйтеся! Курс створений спеціально для новачків. Уроки
+							побудовані так, щоб кожен крок був зрозумілий навіть без
+							досвіду. Ви отримаєте:
+						</p>
+
+						<ul class="faq__item-list">
+							<li class="program__item">Покрокові відеоінструкції.</li>
+							<li class="program__item">Чек-листи для виконання завдань.</li>
+							<li class="program__item">
+								Підтримку в Telegram-групі на випадок питань.
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20250117011437"></script>
+</body>
+
+</html>
