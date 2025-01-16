@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250117011753">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250117011932">
 	<link rel="shortcut icon" href="favicon.ico">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?_v=20240826114116"></script>
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
@@ -14,83 +14,6 @@
 </head>
 
 <body>
-	<style>
-		body {
-			overflow: hidden;
-		}
-
-		#preloader {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background-color: #fff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			z-index: 9999;
-			opacity: 1;
-			transition: opacity 1s ease;
-			padding-right: 20px;
-			padding-left: 20px;
-		}
-
-		/* Логотип */
-		.preloader-logo {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 25xp;
-			margin-bottom: 75px;
-
-			img {
-				width: 250px;
-
-				@media (max-width: 479px) {
-					width: 200px;
-				}
-			}
-		}
-
-		#content {
-			opacity: 0;
-			transition: opacity 0.8s ease;
-		}
-
-		.loader {
-			height: 5px;
-			width: 200px;
-			--c: no-repeat linear-gradient(#FF0000 0 0);
-			background: var(--c), var(--c), #dbdbdb;
-			background-size: 60% 100%;
-			animation: l16 3s infinite;
-		}
-
-		@keyframes l16 {
-			0% {
-				background-position: -150% 0, -150% 0
-			}
-
-			66% {
-				background-position: 250% 0, -150% 0
-			}
-
-			100% {
-				background-position: 250% 0, 250% 0
-			}
-		}
-	</style>
-
-
-	<div id="preloader">
-		<div class="preloader-logo">
-			<img src="img/logo.svg" alt="Logo">
-		</div>
-		<div class="loader"></div>
-	</div>
-
 	<div class="wrapper" id="content">
 		<header class="header"></header>
 
@@ -484,7 +407,7 @@
 
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250117011753"></script>
+	<script src="js/app.min.js?_v=20250117011932"></script>
 </body>
 
 </html>
