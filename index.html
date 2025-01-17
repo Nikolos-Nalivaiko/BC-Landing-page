@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250117014122">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250118003836">
 	<link rel="shortcut icon" href="favicon.ico">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?_v=20240826114116"></script>
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
@@ -14,6 +14,203 @@
 </head>
 
 <body>
+	<style>
+		body {
+			overflow: hidden;
+		}
+
+		#preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			z-index: 9999;
+			opacity: 1;
+			transition: opacity 1s ease;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+
+		#content {
+			opacity: 0;
+			transition: opacity 0.8s ease;
+		}
+
+		.loader {
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+			position: relative;
+			transform: rotate(45deg);
+		}
+
+		.loader::before {
+			content: "";
+			box-sizing: border-box;
+			width: 24px;
+			height: 24px;
+			position: absolute;
+			left: 0;
+			top: -24px;
+			animation: animloader 4s ease infinite;
+		}
+
+		.loader::after {
+			content: "";
+			box-sizing: border-box;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 24px;
+			height: 24px;
+			background: #7b04df;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+			animation: animloader2 2s ease infinite;
+		}
+
+		@keyframes animloader {
+			0% {
+				box-shadow:
+					0 24px rgba(255, 255, 255, 0),
+					24px 24px rgba(255, 255, 255, 0),
+					24px 48px rgba(255, 255, 255, 0),
+					0px 48px rgba(255, 255, 255, 0);
+			}
+
+			12% {
+				box-shadow:
+					0 24px white,
+					24px 24px rgba(255, 255, 255, 0),
+					24px 48px rgba(255, 255, 255, 0),
+					0px 48px rgba(255, 255, 255, 0);
+			}
+
+			25% {
+				box-shadow:
+					0 24px white,
+					24px 24px white,
+					24px 48px rgba(255, 255, 255, 0),
+					0px 48px rgba(255, 255, 255, 0);
+			}
+
+			37% {
+				box-shadow:
+					0 24px white,
+					24px 24px white,
+					24px 48px white,
+					0px 48px rgba(255, 255, 255, 0);
+			}
+
+			50% {
+				box-shadow:
+					0 24px white,
+					24px 24px white,
+					24px 48px white,
+					0px 48px white;
+			}
+
+			62% {
+				box-shadow:
+					0 24px rgba(255, 255, 255, 0),
+					24px 24px white,
+					24px 48px white,
+					0px 48px white;
+			}
+
+			75% {
+				box-shadow:
+					0 24px rgba(255, 255, 255, 0),
+					24px 24px rgba(255, 255, 255, 0),
+					24px 48px white,
+					0px 48px white;
+			}
+
+			87% {
+				box-shadow:
+					0 24px rgba(255, 255, 255, 0),
+					24px 24px rgba(255, 255, 255, 0),
+					24px 48px rgba(255, 255, 255, 0),
+					0px 48px white;
+			}
+
+			100% {
+				box-shadow:
+					0 24px rgba(255, 255, 255, 0),
+					24px 24px rgba(255, 255, 255, 0),
+					24px 48px rgba(255, 255, 255, 0),
+					0px 48px rgba(255, 255, 255, 0);
+			}
+		}
+
+		@keyframes animloader2 {
+			0% {
+				transform: translate(0, 0) rotateX(0) rotateY(0);
+			}
+
+			25% {
+				transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+			}
+
+			50% {
+				transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+			}
+
+			75% {
+				transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+			}
+
+			100% {
+				transform: translate(0, 0) rotateX(0) rotateY(360deg);
+			}
+		}
+	</style>
+
+	<div id="preloader">
+		<span class="loader"></span>
+	</div>
+	<!-- Структура Модульного вікна -->
+
+	<div class="popup" id="popup">
+		<div class="popup__wrapper">
+			<button data-close type="button" class="popup__close">
+				<svg>
+					<use xlink:href="img/icons/icons.svg#close"></use>
+				</svg>
+			</button>
+
+			<div class="popup__content">
+				<h4 class="popup__title">
+					Заповніть форму та <span>отримайте доступ</span> до курсу
+					<span>"Системний бізнес на маркетплейсах"</span>.
+				</h4>
+
+				<form action="" method="post" class="popup__form">
+					<div class="popup__form-inner">
+						<input type="email" class="popup__input" placeholder="Ваш e-mail" />
+						<input type="number" class="popup__input" placeholder="Ваш номер телефону" />
+					</div>
+
+					<p class="popup__description">
+						Всі дані конфіденційні та потрібні тільки для зв'язку з менеджером
+						P.S. Ви нічим не ризикуєте! Гарантія повернення коштів - 14 днів, якщо
+						курс вам не підійде
+					</p>
+
+					<button type="submit" class="cta__btn--extensions open-popup">
+						<span class="cta__btn">Надіслати</span>
+						<span class="cta__btn--extensions-subbtn cta__btn--extensions-subbtn--short cta__btn--short">-89%</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div class="wrapper" id="content">
 		<header class="header"></header>
 
@@ -30,7 +227,9 @@
 						Prom.ua та Епіцентром. Навіть без досвіду та великих вкладень!
 					</p>
 					<div class="hero__btn-wrapper">
-						<button class="hero__btn cta__btn">Отримати курс</button>
+						<button class="hero__btn cta__btn open-popup">
+							Отримати курс
+						</button>
 						<div class="hero__prices">
 							<span class="hero__price">390 грн.</span>
 							<span class="hero__price--old">3550 грн.</span>
@@ -40,7 +239,63 @@
 				<img src="img/hero/hero.webp" class="hero__image" alt="Image" />
 			</section>
 
-			<section class="start__section __container section">
+			<section class="template__section __container section accordion fade-in">
+				<div class="accordion-item">
+					<div class="template__wrapper">
+						<img src="img/template/template.webp" class="template__image" alt="Image" />
+						<div class="template__text">
+							<p class="template__title">
+								Отримай бонуси вартістю <span>4000 грн</span>, доки пропозиція
+								активна!
+							</p>
+							<div class="proposal__timer-wrapper">
+								<p class="template__timer-subtitle proposal__subtitle">
+									До завершення акції залишилось:
+								</p>
+								<span class="proposal__timer" id="timer-template"></span>
+							</div>
+							<button class="template__btn accordion-btn">
+								<div class="template__icon">
+									<img src="img/icons/arrow-bottom.svg" alt="Image" />
+								</div>
+								<span class="template__btn-text">Переглянути шаблони</span>
+							</button>
+						</div>
+					</div>
+					<ul class="template__list accordion-content">
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+						<li class="template__item">
+							<img src="img/icons/seen-purple.svg" class="template__item-icon" alt="Image" />
+							Шаблон дослідження маркетплейсів
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="start__section __container section fade-in">
 				<div class="start__text">
 					<h2 class="start__title">Швидкий старт</h2>
 					<p class="start__subtitle">
@@ -65,7 +320,7 @@
 				</div>
 			</section>
 
-			<section class="author__section __container section">
+			<section class="author__section __container section fade-in">
 				<div class="author__text">
 					<h3 class="author__title">
 						Єдина <span>програма</span>, яка допоможе тобі
@@ -81,7 +336,9 @@
 							день!”
 						</p>
 					</div>
-					<button class="author__btn cta__btn">Хочу приєднатися!</button>
+					<button class="author__btn cta__btn open-popup">
+						Хочу приєднатися!
+					</button>
 				</div>
 				<div class="author__image-wrapper">
 					<div class="author__blocks">
@@ -108,10 +365,10 @@
 				</div>
 			</section>
 
-			<section class="advantages__section __container section">
+			<section class="advantages__section __container section fade-in">
 				<div class="advantages__inner">
 					<h2 class="advantages__title">6 ключових переваг курсу</h2>
-					<button class="cta__btn--extensions">
+					<button class="cta__btn--extensions open-popup">
 						<span class="advantages__btn cta__btn">про програму</span>
 						<span class="advantages__btn cta__btn--extensions-subbtn">-89%</span>
 					</button>
@@ -153,7 +410,7 @@
 				</div>
 			</section>
 
-			<section class="about__section __container section">
+			<section class="about__section __container section fade-in">
 				<h2 class="about__title">Цей курс для тебе, якщо….</h2>
 				<div class="about__blocks">
 					<div class="about__block">
@@ -198,13 +455,13 @@
 				</div>
 			</section>
 
-			<section class="program__section __container section">
+			<section class="program__section __container section fade-in">
 				<h2 class="program__title">Програма курсу</h2>
-				<div class="program__blocks">
-					<div class="program__block">
+				<div class="program__blocks accordion">
+					<div class="program__block accordion-item">
 						<div class="program__block-header">
 							<div class="program__btn-wrapper">
-								<button class="program__btn">
+								<button class="program__btn accordion-btn">
 									<img src="img/icons/arrow-bottom.svg" alt="Image" />
 								</button>
 								<span class="program__btn-title">Крок 1</span>
@@ -213,23 +470,25 @@
 							<p class="program__block-title">Знайомство з маркетплейсами</p>
 						</div>
 
-						<ul class="program__list">
-							<li class="program__item">
-								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
-							</li>
-							<li class="program__item">
-								Як знайти свою нішу та вигідні товари?
-							</li>
-							<li class="program__item">
-								Основні переваги роботи з маркетплейсами.
-							</li>
-						</ul>
+						<div class="accordion-content">
+							<ul class="program__list">
+								<li class="program__item">
+									Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+								</li>
+								<li class="program__item">
+									Як знайти свою нішу та вигідні товари?
+								</li>
+								<li class="program__item">
+									Основні переваги роботи з маркетплейсами.
+								</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="program__block">
+					<div class="program__block accordion-item">
 						<div class="program__block-header">
 							<div class="program__btn-wrapper">
-								<button class="program__btn">
+								<button class="program__btn accordion-btn">
 									<img src="img/icons/arrow-bottom.svg" alt="Image" />
 								</button>
 								<span class="program__btn-title">Крок 1</span>
@@ -238,23 +497,25 @@
 							<p class="program__block-title">Знайомство з маркетплейсами</p>
 						</div>
 
-						<ul class="program__list">
-							<li class="program__item">
-								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
-							</li>
-							<li class="program__item">
-								Як знайти свою нішу та вигідні товари?
-							</li>
-							<li class="program__item">
-								Основні переваги роботи з маркетплейсами.
-							</li>
-						</ul>
+						<div class="accordion-content">
+							<ul class="program__list">
+								<li class="program__item">
+									Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+								</li>
+								<li class="program__item">
+									Як знайти свою нішу та вигідні товари?
+								</li>
+								<li class="program__item">
+									Основні переваги роботи з маркетплейсами.
+								</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="program__block">
+					<div class="program__block accordion-item">
 						<div class="program__block-header">
 							<div class="program__btn-wrapper">
-								<button class="program__btn">
+								<button class="program__btn accordion-btn">
 									<img src="img/icons/arrow-bottom.svg" alt="Image" />
 								</button>
 								<span class="program__btn-title">Крок 1</span>
@@ -263,23 +524,25 @@
 							<p class="program__block-title">Знайомство з маркетплейсами</p>
 						</div>
 
-						<ul class="program__list">
-							<li class="program__item">
-								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
-							</li>
-							<li class="program__item">
-								Як знайти свою нішу та вигідні товари?
-							</li>
-							<li class="program__item">
-								Основні переваги роботи з маркетплейсами.
-							</li>
-						</ul>
+						<div class="accordion-content">
+							<ul class="program__list">
+								<li class="program__item">
+									Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+								</li>
+								<li class="program__item">
+									Як знайти свою нішу та вигідні товари?
+								</li>
+								<li class="program__item">
+									Основні переваги роботи з маркетплейсами.
+								</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="program__block">
+					<div class="program__block accordion-item">
 						<div class="program__block-header">
 							<div class="program__btn-wrapper">
-								<button class="program__btn">
+								<button class="program__btn accordion-btn">
 									<img src="img/icons/arrow-bottom.svg" alt="Image" />
 								</button>
 								<span class="program__btn-title">Крок 1</span>
@@ -288,17 +551,19 @@
 							<p class="program__block-title">Знайомство з маркетплейсами</p>
 						</div>
 
-						<ul class="program__list">
-							<li class="program__item">
-								Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
-							</li>
-							<li class="program__item">
-								Як знайти свою нішу та вигідні товари?
-							</li>
-							<li class="program__item">
-								Основні переваги роботи з маркетплейсами.
-							</li>
-						</ul>
+						<div class="accordion-content">
+							<ul class="program__list">
+								<li class="program__item">
+									Що таке Rozetka, Prom.ua та Епіцентр? Як вони працюють?
+								</li>
+								<li class="program__item">
+									Як знайти свою нішу та вигідні товари?
+								</li>
+								<li class="program__item">
+									Основні переваги роботи з маркетплейсами.
+								</li>
+							</ul>
+						</div>
 					</div>
 
 					<div class="program__block--bonus">
@@ -325,7 +590,7 @@
 				</div>
 			</section>
 
-			<section class="guarantee__section __container section">
+			<section class="guarantee__section __container section fade-in">
 				<div class="guarantee__wrapper">
 					<h3 class="guarantee__title">100% гарантія повернення коштів</h3>
 					<p class="guarantee__subtitle">
@@ -337,14 +602,14 @@
 				</div>
 			</section>
 
-			<section class="faq__section __container section">
+			<section class="faq__section __container section fade-in">
 				<h2 class="faq__title">Часті запитання</h2>
 				<p class="faq__subtitle">
 					Маєш питання? Ось відповіді на найпоширеніші
 				</p>
 
-				<div class="faq__list">
-					<div class="faq__item">
+				<div class="faq__list accordion">
+					<div class="faq__item accordion-item">
 						<div class="faq__header">
 							<div class="faq__text">
 								<div class="faq__icon">
@@ -354,25 +619,29 @@
 									Що робити, якщо я нічого не знаю про маркетплейси?
 								</p>
 							</div>
-							<button class="faq__arrow">
+							<button class="faq__arrow accordion-btn">
 								<img src="img/icons/arrow-faq.svg" alt="Image" />
 							</button>
 						</div>
-						<p class="faq__description">
-							Не хвилюйтеся! Курс створений спеціально для новачків. Уроки
-							побудовані так, щоб кожен крок був зрозумілий навіть без
-							досвіду. Ви отримаєте:
-						</p>
+						<div class="accordion-content">
+							<p class="faq__description">
+								Не хвилюйтеся! Курс створений спеціально для новачків. Уроки
+								побудовані так, щоб кожен крок був зрозумілий навіть без
+								досвіду. Ви отримаєте:
+							</p>
 
-						<ul class="faq__item-list">
-							<li class="program__item">Покрокові відеоінструкції.</li>
-							<li class="program__item">Чек-листи для виконання завдань.</li>
-							<li class="program__item">
-								Підтримку в Telegram-групі на випадок питань.
-							</li>
-						</ul>
+							<ul class="faq__item-list">
+								<li class="program__item">Покрокові відеоінструкції.</li>
+								<li class="program__item">
+									Чек-листи для виконання завдань.
+								</li>
+								<li class="program__item">
+									Підтримку в Telegram-групі на випадок питань.
+								</li>
+							</ul>
+						</div>
 					</div>
-					<div class="faq__item">
+					<div class="faq__item accordion-item">
 						<div class="faq__header">
 							<div class="faq__text">
 								<div class="faq__icon">
@@ -382,32 +651,74 @@
 									Що робити, якщо я нічого не знаю про маркетплейси?
 								</p>
 							</div>
-							<button class="faq__arrow">
+							<button class="faq__arrow accordion-btn">
 								<img src="img/icons/arrow-faq.svg" alt="Image" />
 							</button>
 						</div>
-						<p class="faq__description">
-							Не хвилюйтеся! Курс створений спеціально для новачків. Уроки
-							побудовані так, щоб кожен крок був зрозумілий навіть без
-							досвіду. Ви отримаєте:
-						</p>
+						<div class="accordion-content">
+							<p class="faq__description">
+								Не хвилюйтеся! Курс створений спеціально для новачків. Уроки
+								побудовані так, щоб кожен крок був зрозумілий навіть без
+								досвіду. Ви отримаєте:
+							</p>
 
-						<ul class="faq__item-list">
-							<li class="program__item">Покрокові відеоінструкції.</li>
-							<li class="program__item">Чек-листи для виконання завдань.</li>
-							<li class="program__item">
-								Підтримку в Telegram-групі на випадок питань.
-							</li>
-						</ul>
+							<ul class="faq__item-list">
+								<li class="program__item">Покрокові відеоінструкції.</li>
+								<li class="program__item">
+									Чек-листи для виконання завдань.
+								</li>
+								<li class="program__item">
+									Підтримку в Telegram-групі на випадок питань.
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</section>
-		</main>
-		<footer class="footer">
 
+			<section class="proposal__section __container section fade-in">
+				<div class="proposal__wrapper">
+					<div class="proposal__text">
+						<h3 class="proposal__title">
+							Почни зараз та отримай результат уже цього тижня!
+						</h3>
+						<div class="proposal__timer-wrapper">
+							<p class="proposal__subtitle">
+								До завершення акції залишилось:
+							</p>
+							<span class="proposal__timer" id="timer"></span>
+						</div>
+						<button class="cta__btn--extensions open-popup">
+							<span class="advantages__btn cta__btn">Отримати курс</span>
+							<span class="advantages__btn cta__btn--extensions-subbtn cta__btn--extensions-subbtn--short cta__btn--short">-89%</span>
+						</button>
+					</div>
+					<img src="img/proposal/proposal.webp" class="proposal__image" alt="Image" />
+				</div>
+			</section>
+		</main>
+		<footer class="footer __container section">
+			<div class="footer__wrapper">
+				<h4 class="footer__title">ФОП Тодорчук Я.В.</h4>
+				<div class="footer__info">
+					<span class="footer__info-text">ІПН 3261515668</span>
+					<span class="footer__info-text footer__info-phone">+380503352101</span>
+				</div>
+				<a href="" class="footer__mail">todorchuk.e.e.@gmail.com</a>
+			</div>
+
+			<ul class="footer__links">
+				<li class="footer__item">
+					<a href="" class="footer__link">Політика конфіденційності</a>
+				</li>
+				<li class="footer__item">
+					<a href="" class="footer__link">Публічна оферта</a>
+				</li>
+			</ul>
 		</footer>
+
 	</div>
-	<script src="js/app.min.js?_v=20250117014122"></script>
+	<script src="js/app.min.js?_v=20250118003836"></script>
 </body>
 
 </html>

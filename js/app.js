@@ -1,5 +1,22 @@
 (() => {
     "use strict";
+    class Preloader {
+        constructor(preloaderElement, contentElement) {
+            this.preloader = preloaderElement;
+            this.content = contentElement;
+        }
+        hide() {
+            this.preloader.style.opacity = "0";
+            setTimeout((() => {
+                this.preloader.style.display = "none";
+                this.content.style.display = "block";
+                setTimeout((() => {
+                    this.content.style.opacity = "1";
+                    document.body.style.overflow = "auto";
+                }), 50);
+            }), 1e3);
+        }
+    }
     function ssr_window_esm_isObject(obj) {
         return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
     }
@@ -2957,6 +2974,37 @@
         }));
     }));
     swiper_core_Swiper.use([ Resize, Observer ]);
+    class Modal {
+        constructor(modalSelector) {
+            this.modal = document.querySelector(modalSelector);
+            if (this.modal) {
+                this.closeButton = this.modal.querySelector("[data-close]");
+                this.overlay = this.modal.querySelector(".popup__wrapper");
+                this.initEvents();
+            }
+        }
+        initEvents() {
+            if (this.closeButton) this.closeButton.addEventListener("click", (() => this.closeModal()));
+            document.addEventListener("keydown", (event => {
+                if (event.key === "Escape") this.closeModal();
+            }));
+            if (this.overlay) this.overlay.addEventListener("click", (event => {
+                if (event.target === this.overlay) this.closeModal();
+            }));
+        }
+        openModal() {
+            if (this.modal) {
+                document.body.classList.add("popup-show");
+                this.modal.classList.add("popup_show");
+            }
+        }
+        closeModal() {
+            if (this.modal) {
+                document.body.classList.remove("popup-show");
+                this.modal.classList.remove("popup_show");
+            }
+        }
+    }
     /**!
  * Sortable 1.15.3
  * @author	RubaXa   <trash@rubaxa.org>
@@ -8568,7 +8616,86 @@
             });
         }
     }
+    function initAccordion(accordionContainer) {
+        const items = accordionContainer.querySelectorAll(".accordion-item");
+        function closeAllItems() {
+            items.forEach((item => {
+                item.classList.remove("open");
+                const content = item.querySelector(".accordion-content");
+                if (content) {
+                    content.style.maxHeight = 0;
+                    content.style.paddingTop = "0";
+                    content.style.paddingBottom = "0";
+                }
+            }));
+        }
+        items.forEach((item => {
+            const btn = item.querySelector(".accordion-btn");
+            const content = item.querySelector(".accordion-content");
+            if (!btn || !content) return;
+            btn.addEventListener("click", (() => {
+                if (item.classList.contains("open")) {
+                    item.classList.remove("open");
+                    content.style.maxHeight = 0;
+                    content.style.paddingTop = "0";
+                    content.style.paddingBottom = "0";
+                } else {
+                    closeAllItems();
+                    item.classList.add("open");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.paddingTop = "";
+                    content.style.paddingBottom = "";
+                }
+            }));
+        }));
+    }
+    function initTimer(element, hours, minutes, seconds) {
+        let totalSeconds = hours * 3600 + minutes * 60 + seconds;
+        const initialTotal = totalSeconds;
+        function formatTime(num) {
+            return num < 10 ? "0" + num : num;
+        }
+        function updateDisplay(remainingSeconds) {
+            const h = Math.floor(remainingSeconds / 3600);
+            const m = Math.floor(remainingSeconds % 3600 / 60);
+            const s = remainingSeconds % 60;
+            const timeString = `${h}:${formatTime(m)}:${formatTime(s)}`;
+            element.textContent = timeString;
+        }
+        updateDisplay(totalSeconds);
+        const intervalId = setInterval((() => {
+            totalSeconds--;
+            if (totalSeconds < 0) totalSeconds = initialTotal;
+            updateDisplay(totalSeconds);
+        }), 1e3);
+        return {
+            stop() {
+                clearInterval(intervalId);
+            }
+        };
+    }
     document.addEventListener("DOMContentLoaded", (() => {
+        const preloaderElement = document.getElementById("preloader");
+        const contentElement = document.getElementById("content");
+        const preloader = new Preloader(preloaderElement, contentElement);
+        window.onload = function() {
+            preloader.hide();
+        };
+        const accordions = document.querySelectorAll(".accordion");
+        accordions.forEach((accordion => {
+            initAccordion(accordion);
+        }));
+        const timerElement = document.querySelector("#timer");
+        initTimer(timerElement, 2, 25, 45);
+        const timerTemplate = document.querySelector("#timer-template");
+        initTimer(timerTemplate, 2, 25, 45);
+        const popup = new Modal("#popup");
+        const openPopupButtons = document.querySelectorAll(".open-popup");
+        openPopupButtons.forEach((button => {
+            button.addEventListener("click", (() => {
+                popup.openModal();
+            }));
+        }));
         new FadeInObserver(".fade-in", {
             duration: 800,
             distance: 65,
